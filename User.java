@@ -5,6 +5,7 @@ public class User {
     private int userid;
     private String userName;
     private String password;
+    private String rol;
     
     public int getUserid() {
         return userid;
@@ -24,9 +25,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getRol() {
+    	return rol;
+    }
+    public void setRol(String rol) {
+    	this.rol = rol;
+    }
     @Override
     public String toString() {
         return "User [userid=" + userid + ", userName=" + userName
-                + ", password=" + password + "]";
+                + ", password=" + password + ", rol=" + rol + "]";
     }    
 }
