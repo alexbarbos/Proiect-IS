@@ -9,9 +9,46 @@ public class Match {
     private String awayTeam;
     private float share1, shareX, share2, share1X, shareX2, share12;
     private HashMap<String,Float> asoc; 
+    private String shareType;
+    private float shareValue;
+    private String finalScore;
+    private int status = 0;
     
-    public Match() {
-    	asoc = new HashMap<String,Float>();
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getFinalScore() {
+		return finalScore;
+	}
+
+	public void setFinalScore(String finalScore) {
+		this.finalScore = finalScore;
+	}
+
+	public float getShareValue() {
+		return shareValue;
+	}
+
+	public void setShareValue(float shareValue) {
+		this.shareValue = shareValue;
+	}
+
+	public String getShareType() {
+		return shareType;
+	}
+
+	public void setShareType(String shareType) {
+		this.shareType = shareType;
+	}
+
+	public Match() {
+    	asoc = new HashMap<>();
     }
     
     public HashMap<String, Float> getAsoc() {
@@ -78,6 +115,6 @@ public class Match {
     public String toString() {
         return "Match [matchid=" + matchid + ", hostTeam=" + hostTeam + ", awayTeam=" + awayTeam + ", share1=" + share1 
         		+ ", shareX=" + shareX + ", share2=" + share2 + ", share1X=" + share1X + ", shareX2=" + shareX2 
-        		+ ", share12=" + share12 + "]";
+        		+ ", share12=" + share12 + ", status=" + status + "]";
     }    
 }
