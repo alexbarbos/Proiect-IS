@@ -23,11 +23,13 @@ public class UserDao {
     public void addUser(User user) throws IOException {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into users (userid, userName, password) values (?, ?, ? )");
+                    .prepareStatement("insert into users (userid, userName, password, rol) values (?, ?, ?, ? )");
             // Parameters start with 1
             preparedStatement.setInt(1, user.getUserid());
             preparedStatement.setString(2, user.getUserName());
             preparedStatement.setString(3, user.getPassword());
+            //preparedStatement.setString(4, user.getRol());
+            preparedStatement.setString(4, "user");
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -46,12 +48,13 @@ public class UserDao {
             preparedStatement.setString(2, user.getPassword());
         	// execute select SQL statement
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
+            while (rs.next() ) {
             	String userName = rs.getString("userName");
             	String password = rs.getString("password");            	
-      
+            	String userRol = rs.getString("rol");
             	user1.setUserName(userName);
                 user1.setPassword(password);
+                user1.setRol(userRol);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,9 +81,9 @@ public class UserDao {
                     .prepareStatement("update users set userName=?, password=?" +
                             "where userid=?");
             // Parameters start with 1
-            preparedStatement.setString(1, user.getUserName());
-            preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setInt(3, user.getUserid());
+            preparedStatement.setString(1, user.getUserName() );
+            preparedStatement.setString(2, user.getPassword() );
+            preparedStatement.setInt(3, user.getUserid() );
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,6 +100,7 @@ public class UserDao {
                 user.setUserid(rs.getInt("userid"));
                 user.setUserName(rs.getString("userName"));
                 user.setPassword(rs.getString("password"));
+                user.setRol(rs.getString("rol"));
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -118,6 +122,7 @@ public class UserDao {
                 user.setUserid(rs.getInt("userid"));
                 user.setUserName(rs.getString("userName"));
                 user.setPassword(rs.getString("password"));
+                user.setRol(rs.getString("rol"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
