@@ -12,17 +12,20 @@
 <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
 <title>Registration</title>
 </head>
-<body>
+<body background="resources/light.gif">
 	<center>
 	<h1> Please register HERE !</h1> 
     <form method="POST" action='UserController' name="frmAddUser">
         <br> 
+        <input type="hidden" readonly="readonly" name="userid"
+            value="<c:out value="${user.userid}" />" /> <br /> <br>
         User Name : <input
             type="text" name="userName"
             value="<c:out value="${user.userName}" />" /> <br /> <br> 
         Password : <input
             type="password" name="password"
             value="<c:out value="${user.password}" />" /> <br />  <br>
+         
         <input type="submit" value="Submit" />
         <h2>Already registered!! <a href="index.jsp">Login Here</a> </h2>
     </form>
