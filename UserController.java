@@ -54,14 +54,17 @@ public class UserController extends HttpServlet {
         user.setPassword(request.getParameter("password"));
         
         String userid = request.getParameter("userid");
-        if(userid == null || userid.isEmpty())
+        if (!request.getParameter("userName").equals(" ") && !request.getParameter("password").equals(" ") )
         {
-            dao.addUser(user);
-        }
-        else
-        {
-            user.setUserid(Integer.parseInt(userid));
-            dao.updateUser(user);
+        	if(userid == null || userid.isEmpty())
+        	{
+        		dao.addUser(user);
+        	}
+        	else
+        	{
+        		user.setUserid(Integer.parseInt(userid));
+        		dao.updateUser(user);
+        	}
         }
         
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
